@@ -203,28 +203,28 @@ In particular, when adding protocol conformance to a model, prefer adding a sepa
 **Preferred:**
 ```swift
 class MyViewController: UIViewController {
-  // class stuff here
+    // class stuff here
 }
 
 
 // MARK: - UITableViewDataSource
 
 extension MyViewController: UITableViewDataSource {
-  // table view data source methods
+    // table view data source methods
 }
 
 
 // MARK: - UIScrollViewDelegate
 
 extension MyViewController: UIScrollViewDelegate {
-  // scroll view delegate methods
+    // scroll view delegate methods
 }
 ```
 
 **Not Preferred:**
 ```swift
 class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-  // all methods
+    // all methods
 }
 ```
 
@@ -241,25 +241,25 @@ Aspirational methods not directly associated with the tutorial whose implementat
 **Preferred:**
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  return Database.contacts.count
+    return Database.contacts.count
 }
 ```
 
 **Not Preferred:**
 ```swift
 override func didReceiveMemoryWarning() {
-  super.didReceiveMemoryWarning()
-  // Dispose of any resources that can be recreated.
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
 }
 
 override func numberOfSections(in tableView: UITableView) -> Int {
-  // #warning Incomplete implementation, return the number of sections
-  return 1
+    // #warning Incomplete implementation, return the number of sections
+    return 1
 }
 
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  // #warning Incomplete implementation, return the number of rows
-  return Database.contacts.count
+    // #warning Incomplete implementation, return the number of rows
+    return Database.contacts.count
 }
 
 ```
@@ -276,9 +276,9 @@ Keep imports minimal. For example, don't import `UIKit` when importing `Foundati
 **Preferred:**
 ```swift
 if user.isHappy {
-  // Do something
+    // Do something
 } else {
-  // Do something else
+    // Do something else
 }
 ```
 
@@ -286,10 +286,10 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
-  // Do something
+    // Do something
 }
 else {
-  // Do something else
+    // Do something else
 }
 ```
 
@@ -298,14 +298,14 @@ else {
 **Preferred:**
 ```swift
 class TestDatabase: Database {
-  var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+    var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
 
 **Not Preferred:**
 ```swift
 class TestDatabase : Database {
-  var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
+    var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
 
@@ -435,7 +435,7 @@ This example is more a real life one.
 //  KidsRefresh
 //
 //  Created by Claudio Carnino on 18/10/2017.
-//  Copyright © 2017 Discovery. All rights reserved.
+//  Copyright © 2017 BroncoYolo. All rights reserved.
 //
 
 import UIKit
@@ -530,16 +530,16 @@ For conciseness, if a computed property is read-only, omit the get clause. The g
 **Preferred:**
 ```swift
 var diameter: Double {
-  return radius * 2
+    return radius * 2
 }
 ```
 
 **Not Preferred:**
 ```swift
 var diameter: Double {
-  get {
-    return radius * 2
-  }
+    get {
+        return radius * 2
+    }
 }
 ```
 
@@ -560,7 +560,7 @@ Keep short function declarations on one line including the opening brace:
 
 ```swift
 func reticulateSplines(spline: [Double]) -> Bool {
-  // reticulate code goes here
+    // reticulate code goes here
 }
 ```
 
@@ -582,26 +582,26 @@ Use trailing closure syntax only if there's a single closure expression paramete
 **Preferred:**
 ```swift
 UIView.animate(withDuration: 1.0) {
-  self.myView.alpha = 0
+    self.myView.alpha = 0
 }
 
 UIView.animate(withDuration: 1.0, animations: {
-  self.myView.alpha = 0
+    self.myView.alpha = 0
 }, completion: { finished in
-  self.myView.removeFromSuperview()
+    self.myView.removeFromSuperview()
 })
 ```
 
 **Not Preferred:**
 ```swift
 UIView.animate(withDuration: 1.0, animations: {
-  self.myView.alpha = 0
+    self.myView.alpha = 0
 })
 
 UIView.animate(withDuration: 1.0, animations: {
-  self.myView.alpha = 0
+    self.myView.alpha = 0
 }) { f in
-  self.myView.removeFromSuperview()
+    self.myView.removeFromSuperview()
 }
 ```
 
@@ -609,7 +609,7 @@ For single-expression closures where the context is clear, use implicit returns:
 
 ```swift
 attendeeList.sort { a, b in
-  a > b
+    a > b
 }
 ```
 
@@ -619,9 +619,9 @@ Chained methods using trailing closures should be clear and easy to read in cont
 let value = numbers.map { $0 * 2 }.filter { $0 % 3 == 0 }.index(of: 90)
 
 let value = numbers
-  .map {$0 * 2}
-  .filter {$0 > 50}
-  .map {$0 + 10}
+    .map {$0 * 2}
+    .filter {$0 > 50}
+    .map {$0 + 10}
 ```
 
 ## Types
@@ -653,8 +653,8 @@ You can define constants on a type rather than on an instance of that type using
 **Preferred:**
 ```swift
 enum Math {
-  static let e = 2.718281828459045235360287
-  static let root2 = 1.41421356237309504880168872
+    static let e = 2.718281828459045235360287
+    static let root2 = 1.41421356237309504880168872
 }
 
 let hypotenuse = side * Math.root2
@@ -690,7 +690,7 @@ Use optional binding when it's more convenient to unwrap once and perform multip
 
 ```swift
 if let textContainer = self.textContainer {
-  // do many things with textContainer
+    // do many things with textContainer
 }
 ```
 
@@ -716,9 +716,9 @@ var optionalSubview: UIView?
 var volume: Double?
 
 if let unwrappedSubview = optionalSubview {
-  if let realVolume = volume {
-    // do something with unwrappedSubview and realVolume
-  }
+    if let realVolume = volume {
+        // do something with unwrappedSubview and realVolume
+    }
 }
 ```
 
@@ -730,11 +730,11 @@ Consider using lazy initialization for finer grain control over object lifetime.
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
 private func makeLocationManager() -> CLLocationManager {
-  let manager = CLLocationManager()
-  manager.desiredAccuracy = kCLLocationAccuracyBest
-  manager.delegate = self
-  manager.requestAlwaysAuthorization()
-  return manager
+    let manager = CLLocationManager()
+    manager.desiredAccuracy = kCLLocationAccuracyBest
+    manager.delegate = self
+    manager.requestAlwaysAuthorization()
+    return manager
 }
 ```
 
@@ -847,9 +847,9 @@ Extend object lifetime using the `[weak self]` and ``guard let `self` = self els
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-  guard let `self` = self else { return }
-  let model = strongSelf.updateModel(response)
-  strongSelf.updateUI(model)
+    guard let `self` = self else { return }
+    let model = strongSelf.updateModel(response)
+    strongSelf.updateUI(model)
 }
 ```
 
@@ -857,8 +857,8 @@ resource.request().onComplete { [weak self] response in
 ```swift
 // might crash if self is released before response returns
 resource.request().onComplete { [unowned self] response in
-  let model = self.updateModel(response)
-  self.updateUI(model)
+    let model = self.updateModel(response)
+    self.updateUI(model)
 }
 ```
 
@@ -875,7 +875,7 @@ Use access control as the leading property specifier. The only things that shoul
 private let message = "Great Scott!"
 
 class TimeMachine {  
-  fileprivate dynamic lazy var fluxCapacitor = FluxCapacitor()
+    fileprivate dynamic lazy var fluxCapacitor = FluxCapacitor()
 }
 ```
 
@@ -884,7 +884,7 @@ class TimeMachine {
 fileprivate let message = "Great Scott!"
 
 class TimeMachine {  
-  lazy dynamic fileprivate var fluxCapacitor = FluxCapacitor()
+    lazy dynamic fileprivate var fluxCapacitor = FluxCapacitor()
 }
 ```
 
@@ -895,19 +895,19 @@ Prefer the `for-in` style of `for` loop over the `while-condition-increment` sty
 **Preferred:**
 ```swift
 for _ in 0..<3 {
-  print("Hello three times")
+    print("Hello three times")
 }
 
 for (index, person) in attendeeList.enumerated() {
-  print("\(person) is at position #\(index)")
+    print("\(person) is at position #\(index)")
 }
 
 for index in stride(from: 0, to: items.count, by: 2) {
-  print(index)
+    print(index)
 }
 
 for index in (0...3).reversed() {
-  print(index)
+    print(index)
 }
 ```
 
@@ -915,16 +915,16 @@ for index in (0...3).reversed() {
 ```swift
 var i = 0
 while i < 3 {
-  print("Hello three times")
-  i += 1
+    print("Hello three times")
+    i += 1
 }
 
 
 var i = 0
 while i < attendeeList.count {
-  let person = attendeeList[i]
-  print("\(person) is at position #\(i)")
-  i += 1
+    let person = attendeeList[i]
+    print("\(person) is at position #\(i)")
+    i += 1
 }
 ```
 
@@ -936,15 +936,15 @@ When coding with conditionals, the left-hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  guard let context = context else {
-    throw FFTError.noContext
-  }
-  guard let inputData = inputData else {
-    throw FFTError.noInputData
-  }
+    guard let context = context else {
+        throw FFTError.noContext
+    }
+    guard let inputData = inputData else {
+        throw FFTError.noInputData
+    }
 
-  // use context and input to compute the frequencies
-  return frequencies
+    // use context and input to compute the frequencies
+    return frequencies
 }
 ```
 
@@ -952,17 +952,16 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  if let context = context {
-    if let inputData = inputData {
-      // use context and input to compute the frequencies
-
-      return frequencies
+    if let context = context {
+        if let inputData = inputData {
+            // use context and input to compute the frequencies
+            return frequencies
+        } else {
+            throw FFTError.noInputData
+        }
     } else {
-      throw FFTError.noInputData
+        throw FFTError.noContext
     }
-  } else {
-    throw FFTError.noContext
-  }
 }
 ```
 
@@ -971,10 +970,10 @@ When multiple optionals are unwrapped either with `guard` or `if let`, minimize 
 **Preferred:**
 ```swift
 guard let number1 = number1,
-      let number2 = number2,
-      let number3 = number3 
-      else {
-  fatalError("impossible")
+    let number2 = number2,
+    let number3 = number3 
+    else {
+    fatalError("impossible")
 }
 // do something with numbers
 ```
@@ -982,17 +981,17 @@ guard let number1 = number1,
 **Not Preferred:**
 ```swift
 if let number1 = number1 {
-  if let number2 = number2 {
-    if let number3 = number3 {
-      // do something with numbers
+    if let number2 = number2 {
+        if let number3 = number3 {
+            // do something with numbers
+        } else {
+            fatalError("impossible")
+        }
     } else {
-      fatalError("impossible")
+        fatalError("impossible")
     }
-  } else {
-    fatalError("impossible")
-  }
 } else {
-  fatalError("impossible")
+    fatalError("impossible")
 }
 ```
 
@@ -1025,14 +1024,14 @@ Parentheses around conditionals are not required and should be omitted.
 **Preferred:**
 ```swift
 if name == "Hello" {
-  print("World")
+    print("World")
 }
 ```
 
 **Not Preferred:**
 ```swift
 if (name == "Hello") {
-  print("World")
+    print("World")
 }
 ```
 
